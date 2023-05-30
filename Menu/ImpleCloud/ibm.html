@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cloud</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../implementacao.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>Ibm Cloud</h1>
+        </b>
+    </header>
+
+    <div class="textos-div">
+        <p>
+            Procedimento de Implantação:
+1. Navegue para https://cloud.ibm.com.
+</br></br>
+2. Efetue login em sua conta do IBM Cloud.
+</br></br>
+3. Navegue até Classic Infrastructure > Devices > Manage > Images.
+<a><img class="img_ibm_valor" src="../../img/b1.PNG"/></a>
+
+4. Na tela Modelos de Imagens, liste todas as Imagens Públicas (Todas as imagens).
+<a><img class="img_ibm_valor" src="../../img/b2.PNG"/></a>
+
+
+5. Filtre a lista de imagens usando o nome do modelo Guardium.
+<a><img class="img_ibm_valor" src="../../img/b3.PNG"/></a>
+
+6. Localize o modelo de imagem do Guardium correspondente ao tipo de unidade Coletor ou
+Agregador.
+</br></br>
+7. Para encomendar a imagem, clique no ícone mais opções (…) e selecione o tipo de
+imagem que você precisa (Servidor Virtual Público, Reservado, Transitório ou Dedicado
+instância [VSI]).
+</br></br>
+8. Especifique as seguintes opções de configuração necessárias:
+</br></br>
+a. Tipo de Servidor Virtual:
+</br></br>
+i. Público (multilocatário)
+</br></br>
+ii. Dedicado (inquilino único)
+</br></br>
+iii. Transitório (multilocatário, efêmero)
+</br></br>
+4. Reservado (multilocatário, compromisso de prazo)
+</br></br>
+b. Tipo de cobrança
+</br></br>
+i. De hora em hora
+</br></br>
+ii. Por mês
+Nota: Apenas VSIs com base em um ciclo de cobrança mensal são elegíveis para um
+Firewall de Hardware.
+</br></br>
+c. nome de anfitrião
+</br></br>
+d. Domínio
+</br></br>
+e. Localização
+</br></br>
+i. Selecione um centro de dados.
+</br></br>
+f. Configuração do sistema
+</br></br>
+i. Selecione vCPU
+Nota: o IBM Security Guardium recomenda um mínimo de 4
+vCPUs.
+</br></br>
+ii. Selecione RAM
+Observação: o IBM Security Guardium recomenda um mínimo de 24 GB
+de RAM.
+</br></br>
+g. Interface de rede
+</br></br>
+i. Velocidades de porta de uplink
+Observação: para implantar um VSI sem um IP público, selecione Private Only
+interface .
+</br></br>
+ii. Largura de banda de saída pública
+</br></br>
+iii. Grupos de segurança
+</br></br>
+9. Depois de selecionar as configurações, revise seu pedido, leia e concorde com o Contrato de serviço de terceiros e clique em Criar.
+<a><img class="img_ibm_valor" src="../../img/b4.PNG"/></a>
+
+10. Após o pedido ser feito, você será redirecionado para a página Dispositivos
+onde você pode visualizar o VSI provisionado.
+</br></br>
+- Configurando a Rede VM:
+Nota: As configurações de firewall de hardware só são possíveis para um servidor virtual em um
+ciclo de faturamento mensal. Tentativa de configurar um firewall de hardware para um servidor virtual
+em um ciclo de cobrança por hora gera o seguinte erro:
+
+
+
+</br></br>
+2. Scroll down to the Add-ons section. 3. Click Order Hardware Firewall.
+
+
+</br></br>
+4. Revise a configuração do Firewall de hardware, leia e concorde com os Termos de terceiros
+Contrato de serviço e clique em Criar.
+</br></br>
+5. Navegue até o Nome do dispositivo e, em seguida, até a guia Firewall.
+</br></br>
+6. Configure regras de segurança para o seguinte:
+</br></br>
+• Para IU: “tcp:8443”
+</br></br>
+• Para GIM: “tcp:8444-8446; tcp:8081”
+</br></br>
+• Para FAM: “tcp:16022-16023”
+</br></br>
+• Para Unix STAP: “tcp:16016-16018”
+</br></br>
+• Para Windows STAP: “tcp:9500-9501”
+</br></br>
+• Para Pesquisa Rápida: “tcp:8983; tcp:9983”
+</br></br>
+• Para MySQL: “tcp:3306”
+</br></br>
+7. Role para baixo até a seção Rede e anote o seguinte:
+</br></br>
+• Endereço IP público (se aplicável)
+</br></br>
+• Endereço IP privado
+</br></br>
+• Gateway Padrão Privado
+</br></br>
+• Máscara de sub-rede privada
+<a><img class="img_ibm_valor" src="../../img/b5.PNG"/></a>
+
+
+
+
+</br></br>
+- Conectando-se ao Guardium Appliance na nuvem
+</br></br>
+Para se conectar ao dispositivo Guardium por meio do IP privado, você precisa estabelecer uma VPN
+conexão com o IBM Cloud Network.
+</br></br>
+1. Verifique se sua conta de usuário possui credenciais de acesso VPN navegando para
+Gerenciar > Acesso (IAM) > Usuários.
+</br></br>
+2. Clique em sua conta de usuário e role para baixo até a seção de senha VPN para definir
+suas credenciais de VPN.
+</br></br>
+3. Navegue para https://www.ibm.com/cloud/vpn-access.
+</br></br>
+4. Escolha o portal VPN para o Datacenter desejado.
+</br></br>
+5. Forneça suas credenciais de login VPN que você definiu na etapa 2.
+</br></br>
+6. Depois de se conectar ao cliente VPN, você pode SSH e conectar-se à GUI de
+sua instância do Guardium.
+</br></br>
+- Conecte-se à GUI
+</br></br>
+Depois de estabelecer uma conexão VPN, abra um navegador da Web neste endereço:
+https://<ip privado>:8443. Faça login com as credenciais fornecidas pelo Guardium, o sistema
+requer que você altere a senha no primeiro login.
+</br></br>
+- Conecte-se à CLI
+</br></br>
+Para se conectar ao Guardium CLI, ssh (ou use Putty) para o IP privado e faça login como usuário
+cli. Na primeira vez que você fizer login, o sistema solicitará que você altere a senha.
+Troque-o e guarde-o em local seguro.
+</br></br>
+- Configurando a Rede do Appliance:
+</br></br>
+1. Verifique se você pode fazer SSH no dispositivo por meio do usuário CLI.
+Observação: a senha padrão é guardium. Você será solicitado a alterar seu
+senha no primeiro acesso.
+</br></br>
+
+
+
+
+
+
+</br></br>
+2. Defina as configurações de rede.
+</br></br>
+a. SSH no dispositivo usando o IP privado como usuário CLI.
+</br></br>
+b. Altere sua senha no primeiro login.
+</br></br>
+
+
+
+
+
+
+
+c. Configure o IP do sistema (use o ip privado).
+</br></br>
+
+
+
+d. Configure a máscara de rede.
+</br></br>
+
+
+e. Configure a rota interna.
+</br></br>
+
+
+f. Configure o resolvedor de rede.
+</br></br>
+
+
+g. Configure o nome do host.
+</br></br>
+
+
+
+
+h. Configure o domínio.
+</br></br>
+
+
+
+
+
+i. Reinicie a rede para aplicar as alterações.
+
+
+        </p>
+    </div>
+    
+
+
+</body>
+<script src="script.js"></script>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cloud</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../implementacao.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>AWS</h1>
+        </b>
+    </header>
+
+    <div class="textos-div">
+        <p>As instâncias do Guardium podem ser implantadas na AWS de duas maneiras. você pode implantar
+            do mercado ou de Amazon Machine Images específicas do Guardium (AMIs).
+        </p>
+    </div>
+    <div class="textos-div">
+    <details>
+        <summary>IMPLANTADO A PARTIR DO MARKETPLACE</summary>
+        <p> 
+            <b>Método 1</b>
+        </br></br>
+            1. Navegue até o AWS MARKETPLACE
+        </br></br>
+            2. Procura por Guardium;
+        </br></br>
+            <a><img class="img_aw" src="../../img/aws_ibm.PNG"/></a>
+            3. Clique no IBM Security Guardium Collector ou no IBM Security Guardium
+            Oferta do agregador;
+        </br></br>
+            4. Clique em Continue to Subscribe para assinar a oferta;
+        </br></br>
+        <a><img class="img_ibm_valor" src="../../img/ibmaws_valor.PNG"/></a>
+        5. Você será solicitado a fazer login em sua conta da AWS, caso ainda não tenha feito login;
+        6. Revise os termos e condições;
+        7. Clique em Continuar para configuração;
+        <a><img class="img_aw" src="../../img/ibm3.PNG"/></a>
+    </br></br>
+        8. Revise a opção de atendimento e clique em Continuar para iniciar;
+        <a><img class="img_ibm_valor" src="../../img/ibmConfig.PNG"/></a>
+    </br></br>
+        9. Clique em Instruções de uso para revisar as instruções;
+        <a><img class="img_ibm_valor" src="../../img/ibmlauch.PNG"/></a>
+    </br></br>
+        10.Escolha iniciar o software a partir do site ou EC2;
+        Observação: você também pode optar por copiar a oferta do Guardium para seu serviço AWS
+        Catálogo para gerenciar os recursos de nuvem da sua organização
+    </br></br>
+        11.Escolha um tipo de instância EC2;
+    </br></br>
+        12.Defina as configurações de VPC.
+    </br></br>
+        13.Defina as configurações de sub-rede.
+        Observação: por padrão, um endereço IP público é associado à instância em
+        Implantação. Para evitar isso, modifique as configurações de sub-rede no EC2 para
+        desativar as configurações de atribuição automática de IP
+    </br></br>
+        14. Defina as configurações do seu grupo de segurança;
+    </br></br>
+        15.Defina as configurações do par de chaves;
+        Observação: o acesso às instâncias do Guardium é limitado ao uso de um par de chaves do EC2.
+        Autenticação baseada em senha e comandos relacionados não são suportados,
+        incluindo os seguintes comandos:
+        > armazenar senha de expiração cli
+        > mostrar cli de expiração de senha
+    </br></br>
+        16.Clique em Iniciar para iniciar sua instância do Guardium.
+        </p>
+        
+    </details>
+    <details>
+        <summary>IMPLANTADO A PARTIR DE UMA AMAZON MACHINE IMAGE (AMI)</summary>
+        <p> 
+            <b>Método 2</b>
+            1. Faça login na página do console AWS EC2;
+            2. Em Imagens, clique em AMIs;
+            3. Ao lado da barra de pesquisa, selecione Imagens públicas e procure por “Guardium”;
+            <a><img class="img_ibm_valor" src="../../img/bdimb.PNG"/></a>
+        
+            4. Selecione entre as AMIs Collector ou Aggregator Guardium;
+        </br></br>
+            5. Clique em Iniciar para iniciar o assistente de criação de instância;
+        </br></br>
+            - Criando a Instância do Guardium
+            1. Na página Escolher um tipo de instância, selecione o tamanho da instância Finalidade geral
+            m4.2xlarge (a Guardium recomenda um mínimo de 4 vCPUs e 24 GB de RAM).
+            Clique em Avançar para configurar os detalhes da instância;
+        </br></br>
+            2. Ao lado de rede, selecione um VPC;
+        </br></br>
+            3. Ao lado de sub-rede, selecione uma sub-rede na lista;
+        </br></br>
+            4. Em Interfaces de rede, insira um endereço IP no endereço IP primário;
+        </br></br>
+            5. Clique em Next para ir para a página Storage Configuration;
+        </br></br>
+            6. Revise a configuração de Armazenamento e clique em Avançar;
+        </br></br>
+            7. Adicione um nome de tag para a instância e clique em Avançar para configurar a Segurança
+        </br></br>
+            Grupo;
+            - Configurando os Grupos de Segurança:
+        </br></br>
+            1. Na página de configuração de segurança, clique em Atribuir um grupo de segurança;
+        </br></br>
+            2. Ao lado de Nome do Grupo de Segurança, insira um nome para o Grupo de Segurança;
+        </br></br>
+            3. Ao lado de Description, escreva uma breve descrição para o Security Group;
+        </br></br>
+            4. O Guardium usa a porta 8443 para se conectar à IU da web e a porta 22 para se conectar
+            o CLI. Crie estas 2 regras:
+            <a><img class="img_ibm_valor" src="../../img/ipibm.PNG"/></a>
+        </br></br>
+            a. Tipo: SSH, Protocolo: TCP, Intervalo de portas: 22, Origem: Personalizado
+        </br></br>
+            b. Tipo: TCP personalizado, Protocolo: TCP, Intervalo de portas: 8443, Origem: Personalizado
+            Observação: a Guardium recomenda que as regras do grupo de segurança permitam o acesso de
+            apenas endereços IP conhecidos.
+            <a><img class="img_ibm_valor" src="../../img/potrocoloibm.PNG"/></a> 
+        </br></br>           
+            5. Clique em Revisar e Iniciar;
+        </br></br>
+            6. Revise as definições de configuração e clique em Iniciar;
+        </br></br>
+            7. Selecione o par de chaves secretas na lista suspensa e clique em Iniciar
+            Instâncias;
+        </br></br>
+            Configuração e configurações
+            Depois que a instância do Guardium é implantada, as etapas abaixo descrevem como se conectar a
+            a instância e como definir as configurações de rede;
+        </br></br>
+            - Conectando-se à instância
+        </br></br>
+            1. Conecte-se à GUI do Guardium: em um navegador, acesse a URL: https://<instanceip>:8443. A senha padrão para usuários admin, accessmgr e Guardium UI
+            é o id da instância;
+        </br></br>
+            2. Conecte-se à CLI. De um terminal, conecte via ssh à linha de comando
+            interface usando a chave privada correspondente à chave pública selecionada quando
+            iniciando a instância:
+            >ssh -i /caminho/para/chave-privada cli@<ip-of-gmachine>
+            </br></br>
+            - Configurando a Rede:
+        </br></br>
+            1. Na página EC2 > Instâncias, encontre os valores para IP privado, máscara de sub-rede,
+            IP do gateway interno e FQDN interno da instância e execute o seguinte
+            Comandos de rede CLI para configurar o dispositivo. Responda “sim” ao
+            pergunta “É um aparelho recém-clonado?”..
+        </br></br>
+            a. Configure o IP primário (eth0)
+            >store net interface ip <instace - ip>
+            </br></br>
+            b. Configurar a máscara de rede
+            >store net interface mask <netmask>
+            </br></br>
+            c. Defina o GID para esta instância
+            >store product gid <n>
+            </br></br>
+            d. Configurar o gateway
+            >store network route defaultroute <default-router-ip>
+            </br></br>
+            e. Definir o resolvedor de DNS
+            >store network resolver 1 <resolver-ip>
+            </br></br>
+            f. Configurar o nome do >store system hostname <instance-hostname>
+            </br></br>
+            g. Configurar o domínio do sistema
+        </br></br>
+            >store system domain <instance-domain>
+            2. Reinicie a rede para que todas as alterações entrem em vigor reinicie a rede:
+            >restart network
+            
+            
+        </p>
+        
+    </details>
+    </div>
+
+
+</body>
+<script src="script.js"></script>

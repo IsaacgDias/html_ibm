@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>INSTALAÇÃO</title>
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../menu.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>INSTALAÇÃO</h1>
+        </b>
+    </header>
+
+    <div class="textos-div">
+        <p>
+            As etapas são:
+            </br> </br>
+            Monte informações de configuração e o hardware necessário antes de começar.
+
+        <details>
+            <summary>...</summary>
+            <p><b>Primeiro passso</b>
+                </br>
+
+                Para se preparar para a implantação do sistema Guardium® , o administrador da rede precisa fornecer as
+                seguintes informações.
+                </br></br>
+                - Endereço IP para a placa de interface (a interface primária)
+                </br></br>
+                - Máscara de sub-rede para endereço IP primário
+                </br></br>
+                - Endereço IP do roteador padrão.
+                </br></br>
+                - Hostname e nome de domínio para designar ao sistema
+                </br></br>
+                - Endereços IP do servidor DNS (até três endereços), e adicionar o novo sistema Guardium ao seu
+                domínio DNS
+                </br></br>
+                - (opcional) Endereço IP para interface de gerenciamento secundário
+                </br></br>
+                - (opcional) Mask para interface de gerenciamento IP secundário
+                </br></br>
+                - (opcional) Gateway para interface de gerenciamento IP secundário
+                </br></br>
+                - (opcional) Nome do host do servidor NTP
+                </br></br>
+                - (opcional) informações de configuração do SMTP (para alertas de e-mail): endereço IP, porta e se a
+                autenticação for usada, um nome de usuário e senha SMTP
+                </br></br>
+                - (opcional) informações de configuração SNMP (para alertas SNMP) o endereço IP do servidor SNMP e o
+                nome
+                da comunidade de trap a utilizar.
+                </br></br>
+
+            </p>
+            <p align="center">---------------------------------</p>
+
+        </details>
+        </br> </br>
+        Configure o aparelho físico ou o aparelho virtual.
+        </br> </br>
+        <details>
+            <summary>...</summary>
+            <p><b>Segundo passso</b>
+                </br>
+                Depois que o aparelho foi carregado no rack do cliente, conecte o aparelho à rede da seguinte maneira:
+                </br></br>
+                - Encontre as conexões de energia. Plugue o cabo (s) de alimentação (s) apropriado (s) nessas conexões
+                </br></br>
+                - Conecte o cabo de rede à porta de rede a interface primária . Conecte quaisquer cabos de rede
+                secundários opcionais.
+                </br></br>
+                - Conecte um Teclado, Video e Mouse diretamente ou através de uma conexão KVM (seja serial ou através da
+                porta USB) para o sistema.
+                </br></br>
+                - Power up o sistema.
+                </br></br>
+                Identificar portas de rede
+
+                As senhas padrão são fornecidas para usuários predefinidos.
+                Ao receber um dispositivo físico da IBM, use estas senhas para a sua configuração inicial.
+                Usuário: accessmgr/ Senha: guard1accessmgr
+                Usuáario: admin/Senha: guard1admin
+                Usuáario: cli/Senha: guard1cli
+
+                A IBM® Security Guardium® Máquina Virtual (VM) é uma solução somente de software licenciada e instalada
+                em uma máquina virtual convidada, como o VMware ESX Server.
+                Para instalar a VM Guardium , siga os passos na Criação da Imagem Virtual. As etapas são:
+                </br></br>
+                - Verificar a compatibilidade do sistema
+                </br></br>
+                - Instalar VMware ESX Server
+                </br></br>
+                - Conectar cabos de rede
+                </br></br>
+                - Configurar o Portal de Gerenciamento de VM
+                </br></br>
+                - Criar uma nova Máquina Virtual
+                </br></br>
+                - Instalar o dispositivo virtual IBM Security Guardium
+                </br></br>
+                Após instalar a VM, retorne para a Etapa 4, Configuração Inicial e Configuração Básica, para obter mais
+                instruções sobre como configurar seu sistema Guardium .</p>
+
+            <p align="center">---------------------------------</p>
+        </details>
+        </br> </br>
+        Instalar a imagem do Guardium.
+        <details>
+            <summary>...</summary>
+            <p><b>Terceiro passso</b>
+                </br>
+                Esta seção explica como instalar a imagem e particionar o disco.
+                </br></br>
+                - Certifique-se de que as configurações de sua UEFI/BIOS "boot sequence " são definidas para tentar a
+                inicialização a partir da mídia removível (a unidade CD/DVD) antes de usar o disco rígido.
+                </br></br>
+                - Carregue a imagem Guardium® a partir do DVD de instalação.
+                </br></br>
+                - Aparecem as duas opções a seguir:
+                </br></br>
+                Instalação Padrão: esta é a inadimplência. Use esta escolha na maioria dos casos ao particionar o disco.
+                Instalação de Partição Customizada: permite mais customização de todas as partições (localmente ou em um
+                disco SAN). Veja partidarização personalizada para obter mais informações sobre como implementar essa
+                opção.
+                </br></br>
+                *Na primeira inicialização após a instalação, o usuário é convidado a aceitar um Contrato de
+                Licenciamento. Eles podem usar PgDn para ler através do acordo ou Q para pular até o final. Para aceitar
+                os termos do acordo, digite q para sair e, em seguida, digite sim. O usuário deve digitar sim para o
+                acordo ou a máquina não irá inicializar.
+                </br></br>
+                - O sistema bota para cima a partir de DVD. São necessários cerca de 12 minutes minutos para esta
+                instalação. O processo de instalação irá agora pedir que você escolha um coletor ou agregador (será
+                configurado como "Collector" automaticamente após 10 seconds se nenhuma entrada for fornecida). Veja a
+                Visão Geral do Produto para uma explicação de Collector e Aggregador. Se você queria escolher agregador
+                e não o escolheu dentro de 10 seconds, você deve reinstalar a fim de voltar a este ponto em que você tem
+                uma escolha de agregador.
+                </br></br>
+                - O sistema reinicialize automaticamente neste ponto para concluir a instalação. O primeiro login após
+                um reboot requer uma mudança de senhas.</p>
+            <p align="center">---------------------------------</p>
+        </details>
+        </br></br>
+        Configure configurações iniciais e básicas.
+        </br></br>
+        <details>
+            <summary>...</summary>
+            <p><b>Quarto passso</b>
+                </br>
+                A etapa inicial deve ser a configuração da rede, que deve ser feita localmente por meio da Interface de
+                Linha de Comando (CLI) acessível através da porta serial ou do console do sistema.
+                Nas etapas a seguir, você fornecerá vários parâmetros de rede para integrar o sistema Guardium® em seu
+                ambiente, usando comandos CLI.
+                Na sintaxe CLI, as variáveis são indicadas por colchetes emaranhados, por exemplo: < ip_enderes>
+                    Substitua cada variável com o valor adequado para sua rede e instalação. Não inclua os suportes.
+            </p>
+            <p align="center">---------------------------------</p>
+        </details>
+        </br> </br>
+        Verificar instalação bem-sucedida.
+        </br> </br>
+        <details>
+            <summary>...</summary>
+            <p><b>Quinto passso</b>
+                </br>
+                Verifique a instalação seguindo as seguintes etapas:
+                - Login to CLI-ssh cli @ < ip do aparelho>
+            </br> </br>
+                    - Login em GUI- https://<hostname of appliance>.<full domain>:8443 (use o userid admin)
+                    </br> </br>
+                            O primeiro login após um reboot exigirá uma mudança de senhas.
+                            Faça login na interface baseada na web do Guardium e acesse a ajuda online integrada para
+                            obter mais informações sobre qualquer uma das tarefas a seguir.
+                            </br> </br>
+                            Para configurar um ambiente federado, configure um dos aparelhos como o gerente central e
+                            configure todos os outros aparelhos a serem gerenciados pelo gestor central.
+                            Use o comando CLI tipo unidade de loja para configurar o tipo de cada sistema Guardium.
+                            </br> </br>
+                            Instalar chaves de licença:
+                            - Faça o login em seu sistema Guardium como o usuário admin .
+                            </br> </br>
+                            - Verifique se o Tipo de Máquina exibido no banner Guardium está correto para o sistema que
+                            você está licenciando.
+                        </br> </br>
+                            - Instalar uma licença base.
+                        </br> </br>
+                            1. Navegar em Configuração > Ferramentas e Visualizações > Licença.
+                            2. Na página Licença , insira a chave base para o seu sistema no campo Chave de Licença e
+                            clique em Aplicar para continuar.
+                            3. A partir do diálogo Contrato de Licença , revise o contrato de licença associado com a
+                            chave base e clique em Aceitar quando estiver pronto para aceitar os termos. A interface
+                            Guardium atualizará automaticamente após aceitar o acordo, mas não haverá alteração na
+                            funcionalidade disponível após a instalação de uma chave de licença base.
+                        </br> </br>
+                            - Instale uma ou mais licenças de anexação.
+                        </br> </br>
+                            - Instalar patches de manutenção (se disponível)
+
+            </p>
+            <p align="center">---------------------------------</p>
+        </details>
+
+
+
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+</body>
+<script src="script.js"></script>

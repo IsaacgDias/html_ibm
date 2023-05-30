@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cloud</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../implementacao.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>Azure Cloud</h1>
+        </b>
+    </header>
+
+    <div class="textos-div">
+        <p>
+        Implementação da oferta IBM Security Guardium BYOL para a Microsoft
+        A plataforma Azure pode ser feita de duas maneiras. O primeiro método usa o
+        Guardium Solution Template no Azure Marketplace enquanto o segundo
+        método usa Guardium Virtual Hard Disks (VHDs).
+        </p>
+    </div>
+    <div class="textos-div">
+    <details>
+        <summary>Método 1: Modelo de Solução Guardium</summary>
+        <p> 
+            <b>Método 1</b>
+        </br></br>
+            1.Navegue até o IBM Guardium Multi-Cloud Data Protection (BYOL)
+            listagem no Microsoft Azure Marketplace.
+            </br></br>
+            2. Clique em Obtenha agora
+            <a><img class="img_ibm_valor" src="../../img/az1.PNG"/></a>
+            3. Clique em Continuar
+            <a><img class="img_ibm_valor" src="../../img/az2.PNG"/></a>
+            
+            4. Clique em Criar para criar uma instância de VM do Guardium:
+            <a><img class="img_ibm_valor" src="../../img/a5.PNG"/></a>
+            
+            5. Defina as configurações básicas:
+            </br></br>
+            a. Selecione sua assinatura.
+            </br></br>
+            b. Crie um grupo de recursos ou selecione um existente.
+            </br></br>
+            c. Selecione a região da implantação da instância.
+            </br></br>
+            d. Digite o nome da sua máquina virtual.
+            </br></br>
+            e. Clique em Avançar para definir as configurações da máquina virtual.
+            <a><img class="img_ibm_valor" src="../../img/az3.PNG"/></a>
+           
+             
+            6. Defina as configurações da máquina virtual:
+            </br></br>
+            a. Selecione o tamanho da VM.
+            </br></br>
+            b. Crie uma conta de armazenamento ou selecione uma existente.
+            </br></br>
+            c. Crie uma nova rede virtual ou selecione uma existente.
+            </br></br>
+            d. Configure uma sub-rede para a rede virtual.
+            </br></br>
+            e. Especifique um nome para o grupo de segurança de rede.
+            Observação: as portas 22 e 8443 são abertas por padrão para permitir SSH e
+            acesso à interface do usuário
+            </br></br>
+            f. Defina intervalos de IP ou CIDR de origem para limitar o acesso à VM.
+            Observação: isso pode ser modificado após a implantação, se necessário, por
+            modificando o grupo de segurança de rede.
+            </br></br>
+            g. Especifique um nome para o Conjunto de Disponibilidade.
+            </br></br>
+            h. Especifique o número de VMs que você gostaria de implantar.
+            </br></br>
+            i. Selecione a versão da instância do Guardium a ser implementada.
+            </br></br>
+            j. Selecione o tipo de unidade da instância a ser implantada.
+            </br></br>
+            k. Clique em Avançar para revisar e criar.
+            <a><img class="img_ibm_valor" src="../../img/az4.PNG"/></a>
+            </br></br>
+            7. Depois que a validação for aprovada, clique em Criar para implantar a instância
+            </br></br>
+            8. Depois que a VM for implantada no Azure, defina o endereço IP privado como estático.
+            </br></br>
+            a. No Azure, vá para Máquinas Virtuais > Instância do Guardium >
+            Rede.
+            </br></br>
+            b. Selecione o nome da interface.
+            </br></br>
+            c. Clique em configurações de IP.
+            </br></br>
+            d. Clique no nome da configuração de IP.
+            </br></br>
+            e. Defina a atribuição como estático.
+            </br></br>
+            f. Clique em Salvar
+            </br></br>
+            9. Depois que a VM for implantada no Azure, defina o IP público como estático, se
+            aplicável
+            </br></br>
+            a. No Azure, vá para Máquinas Virtuais > Instância do Guardium >
+            Rede.
+            </br></br>
+            b. Clique no IP público.
+            </br></br>
+            c. Clique em Configuração.
+            </br></br>
+            d. Defina a atribuição como estático.
+            </br></br>
+            e. Clique em Salvar.
+            Observação: a VM pode ser reinicializada neste estágio.
+            </br></br>
+            10. Para abrir uma conexão SSH, SSH como usuário cli.
+            Observação: a senha padrão é guardium. Você é solicitado a alterar
+            sua senha no primeiro acesso.
+            </br></br>
+            11. Para conectar-se à IU do Guardium, use a URL https://<ip ou
+            hostname>:8443 e faça login como usuário admin ou accessmgr.
+            Observação: a senha padrão é guardium. Você é solicitado a alterar
+            sua senha no primeiro acesso.
+        </p>
+        
+    </details>
+    <details>
+        <summary>Método 2 Guardium VHDs</summary>
+        <p> 
+            <b>Método 2</b>
+            Antes de prosseguir com as etapas abaixo, instale o Azure PowerShell 1.0 (ou
+            mais tarde) e a ferramenta AzCopy.
+            As URLs VHD públicas incluídas aqui contêm o caminho do contêiner de origem
+            seguido pelo nome do VHD.
+            https://guardiumv113images.blob.core.windows.net/aggregator/Guardium_v113_Aggregator.vhd
+            https://guardiumv113images.blob.core.windows.net/collector/Guardium_v113_Collector.vhd
+        </br></br>
+            1. Acesse https://portal.azure.com
+        </br></br>
+            2. No menu, clique em Contas de armazenamento.
+            <a><img class="img_ibm_valor" src="../../img/az11.PNG"/></a>
+            
+            
+            
+
+            3. Crie uma conta de armazenamento de destino.
+        </br></br>
+            a. Clique em Adicionar.
+            <a><img class="img_ibm_valor" src="../../img/az12.PNG"/></a>
+            
+            
+            
+            
+            b. Especifique uma conta de armazenamento válida e um nome de grupo de recursos.
+            Nota: Todos os outros campos podem ser personalizados conforme necessário.
+            <a><img class="img_ibm_valor" src="../../img/az13.PNG"/></a>
+            
+            c. Clique em Criar.
+        </br></br>
+            4. Acesse a página Contas de armazenamento e verifique se a conta de armazenamento
+            foi criado com sucesso.
+        </br></br>
+            5. Crie um contêiner de destino.
+        </br></br>
+            a. Clique no nome da conta de armazenamento.
+            <a><img class="img_ibm_valor" src="../../img/az14.PNG"/></a>
+            
+            
+            b. Clique em Blobs.
+            <a><img class="img_ibm_valor" src="../../img/az15.PNG"/></a>
+   
+            
+            c. Na página do serviço Blob, adicione um Container.
+            <a><img class="img_ibm_valor" src="../../img/az16.PNG"/></a>
+   
+            
+            d. Defina um nome de contêiner válido e defina o tipo de acesso como Privado.
+            <a><img class="img_ibm_valor" src="../../img/az17.PNG"/></a>
+            
+            
+            
+            e. Verifique se o contêiner foi criado com sucesso.
+        </br></br>
+            6. Recupere o URL da conta de armazenamento de destino e a chave de acesso.
+        </br></br>
+            a. Na página do serviço Blob, clique no nome do contêiner de destino.
+        </br></br>
+            b. Clique em Propriedades.
+        </br></br>
+            c. Copie o URL do contêiner de destino e armazene-o em um local seguro
+            local para uso posterior.
+        </br></br>
+            d. Volte para a conta de armazenamento de destino e clique em Acessar
+            chaves.
+        </br></br>
+            
+   
+            e. Copie as chaves de acesso e guarde-as em um local seguro para
+            uso posterior.
+        </br></br>
+            7. Crie uma cópia do arquivo VHD blob no contêiner de destino.
+            <a><img class="img_ibm_valor" src="../../img/az18.PNG"/></a>
+            
+            
+            
+            a. Abra o Windows Powershell.
+        </br></br>
+            b. CD para o diretório onde o comando azcopy.exe está localizado.
+        </br></br>
+            c. Execute o seguinte comando do Powershell com o seguinte
+            mudanças:
+        </br></br>
+            • Substitua <destination-storage-acct> e <dest-container> pelo
+            conta de armazenamento de destino e informações de contêiner que
+            chave de acesso da conta de armazenamento de destino que você gerou em
+            passo 6.
+        </br></br>
+            • Substitua <token SAS> por um token SAS válido. Para mais
+            informações, consulte a documentação do Microsoft Azure sobre
+            introdução ao AzCopy (usando um token SAS).
+            
+        </br></br>
+            d. Quando a operação é concluída, um resumo da transferência é
+            disponível. Certifique-se de que a transferência foi concluída com sucesso.
+            
+            
+            
+        </br></br>
+            e. Verifique se o blob foi copiado com sucesso acessando
+        </br></br>
+            a página do serviço Blob.
+        </br></br>
+            f. Obtenha o URI do VHD clicando no Blob e copiando o
+            URL associado. Armazene o URL em um local seguro.
+        </br></br>
+            8. Implemente o dispositivo IBM Security Guardium.
+        </br></br>
+            a. Abra o Windows PowerShell.
+        </br></br>
+            b. Se ainda não estiver conectado, execute o seguinte comando para fazer login.
+        </br></br>
+            
+            
+            
+            c. Defina os seguintes parâmetros. Neste exemplo, o virtual
+            
+            o nome da máquina está definido como guard-dest-vm e o local como East
+            US.
+            
+            
+            
+            
+            d. Crie um novo disco do SO a partir do VHD que foi copiado na etapa
+        </br></br>
+            8.
+            e. Crie a sub-rede.
+            Neste exemplo, criamos uma sub-rede chamada guardiumSubNet com
+            prefixo de endereço de sub-rede 10.0.0.0/24.
+        </br></br>
+            
+            
+            
+            f. Crie a rede virtual.
+            Neste exemplo, definimos o nome da rede virtual como
+            guardiumVnet e o prefixo de endereço da rede virtual para
+            10.0.0.0/16.
+        </br></br>
+            
+            
+            g. Create a Network Security Group (NSG) and configure Inbound security rules: ▪ Para UI: “tcp:8443” ▪ Para GIM: “tcp:8444-8446; tcp:8081” ▪ Para FAM: “tcp:16022-16023” ▪ Para UNIX S-TAP: “tcp:16016-16018” ▪ Para Windows S-TAP: “tcp:9500-9501” ▪ Para Quick Search: “tcp:8983; tcp:9983” ▪ Para MySQL: “tcp:3306”
+            Se fizer login na VM usando o Protocolo de Área de Trabalho Remota (RDP),
+            você precisa criar uma regra de segurança que permita o acesso RDP na porta
+            3389. Neste exemplo, uma regra RDP é definida e nomeada
+            guardiumRdpRule.
+        </br></br>
+            
+            
+  
+            h. Para proteção contra ameaças externas, o IBM Security Guardium
+            recomenda usar um gateway VPN para se conectar ao virtual
+            máquina. Se por algum motivo a alocação de IP público for necessária, use
+            o seguinte comando para criar o IP público e o associado
+            NIC. Neste exemplo, o nome do endereço IP público é definido como
+            guardiumIP e o nome NIC é definido como guardiumNic. Se IP público
+            alocação não é necessária, pule para a próxima etapa.
+        </br></br>
+            
+            
+            
+            
+            i. Defina o nome e o tamanho da VM. Este exemplo define o nome da VM como
+            guard-dest-vm e o tamanho da vm para Standard_A6.
+        </br></br>
+            
+            
+            j. Adicione a placa de rede.
+        </br></br>
+            k. Adicione o disco do sistema operacional.
+        </br></br>
+            
+            l. Crie a VM.
+        </br></br>
+            
+            m.Verifique se a VM foi criada.
+        </br></br>
+            • Depois que a VM é criada com sucesso, um status
+            resumo está disponível para revisão.
+        </br></br>
+            9. Acesse as máquinas virtuais e verifique se a VM está sendo alocada com
+            estado Criando.
+            Observação: depois que a VM é alocada, o status muda para Running
+            - Configurando a Rede VM:
+        </br></br>
+            1. Clique na instância de VM.
+            
+            
+            
+            
+            
+            
+            
+            2. Por padrão, a VM recebe um endereço IP público. Para desassociar o
+            IP Público:
+            a. Clique no endereço IP público.
+            b. Clique em Visão geral.
+            c. Remova o IP público clicando em Dissociar.
+            d. Quando solicitado a confirmar a desassociação do IP público, clique em Sim.
+            - Conexão com o dispositivo Guardium
+            Para se conectar ao dispositivo Guardium por meio do IP privado, você deve estabelecer
+            uma conexão VPN com a Rede Virtual do Azure. Para obter as etapas sobre como criar
+            e configurar uma conexão VPN com o Azure Cloud, consulte o seguinte
+            documento:
+            https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+            - Conecte-se à GUI
+            Depois que a conexão VPN for estabelecida, abra um navegador da Web e vá para este
+            endereço: https://<guardium-ip>:8443. Entre com as credenciais fornecidas
+            por Guardio. O sistema solicita que você altere a senha no primeiro login.
+            - Conecte-se à CLI
+            Para se conectar ao Guardium CLI, ssh (ou use Putty) para o Guardium IP e
+            faça o login como usuário cli. Você será solicitado a alterar a senha no primeiro login.
+            - Configurando a rede do dispositivo:
+            1. Selecione a VM na página Máquinas Virtuais no portal do Azure.
+            2. Clique em Rede/sub-rede virtual.
+            3. Anote o IP privado associado à VM.
+            4. Defina as configurações de rede.
+            a. SSH no dispositivo usando o IP privado como usuário CLI.
+            b. Altere sua senha no primeiro login
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            c. Configure o IP do sistema (use o ip privado).
+            
+            
+            
+            d. Configure a máscara de rede.
+            
+            
+            e. Configure a rota interna.
+            
+            
+            f. Configurar o resolvedor de rede
+            
+            
+            g. Configurar o nome do host
+            Observação: Se o dispositivo for clonado, responda sim ('y')
+            quando solicitado.
+            
+            
+            
+            
+            
+            h. Configure o domínio.
+            
+            
+            
+            
+            i. Reinicie a rede para aplicar as alterações
+               
+        </p>
+        
+    </details>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="script.js"></script>

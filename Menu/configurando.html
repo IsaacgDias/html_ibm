@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CONFIGURANDO</title>
+  <link href="../style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="../menu.html">Voltar</a>
+      <div class="collapse navbar-collapse" id="textoNavbar">
+        <ul class="navbar-nav mr-auto">
+        
+        </ul>
+      </div>
+    </nav>
+    <b>
+      <h1 align='center'>CONFIGURANDO</h1>
+    </b>
+  </header>
+
+  <div class="textos-div">
+  <p>
+    Configuração do Sistema: A maioria das informações no painel de Configuração do Sistema é definida usando o CLI no momento da instalação.
+  </br></br>>
+    Gerenciando dados(arquivar, restaurar, agregar e backup de sistema): Estabelecer práticas de retenção de dados; controlar volume de atividade; gerenciar planejamento de arquivo de dados e limpeza e backups mensais.
+</br></br>>
+    Modos: Internet Protocol: Configurar Guardium® para executar em um ambiente tradicional IPv4-only , um ambiente IPv6-only , ou em modo duplo onde o sistema suporta os endereços IPv4 e IPv6 .
+</br></br>>
+    Os métodos de espelhamento de rede (SPAN, N-TAP) e mecanismos de inspeção relacionados: Esta configuração é usada nos casos em que um S-TAP® não pode ser instalado no host onde as instâncias do banco de dados a serem monitoradas são executadas. Em vez disso, você pode direcionar uma cópia do tráfego de rede que vai para o host executando os servidores de banco de dados, para um coletor do Guardium. Este método capta apenas o tráfego de rede, não o tráfego local dentro do host do servidor de banco de dados. As limitações estão listadas mais adiante nesta seção. IBM encoruram-se fortemente para usar um S-TAP em vez disso.
+</br></br>>
+    Configurando o portal do Guardium: A partir da página Portal do Guardium , você pode redefinir a porta para o servidor web do dispositivo Guardium, importar certificados SSL, e configurar autenticação para seus usuários do sistema Guardium .
+</br></br>>
+    Gerenciando a versão TLS: É possível desativar o TLS 1.0/1.1e ativar o TLS 1.2 em todos os dispositivos, agentes S-TAP, clientes CAS e GIM.
+</br></br>>
+    Perfil global: A página Perfil Global define padrões que se aplicam a todos os usuários.
+</br></br>>
+    Configurando o alertador: Configure e ative o alertador para enviar mensagens de e-mail, armadilhas SNMP e mensagens Syslog relacionadas ao alerta.
+</br></br>>
+    Instalação e prioridade de mensagens de syslog: A facilidade e a prioridade de mensagens configuradas no syslog do Guardium podem impactar como são consumidas pelo Gerente de Eventos de Incidente de Segurança (SIEM).
+</br></br>>
+    Detecção de anomalias: O processo de Detecção de anomalias executa todo intervalo de pesquisa para criar e salvar, mas não enviar, notificações de alerta de correlação que são baseadas em uma consulta de um alerta.
+</br></br>>
+    Inferência de Sessão: verificações de Inferência de Sessão para sessões abertas que não foram ativas por um período de tempo especificado, e as marca como fechadas.
+</br></br>>
+    Permitir (aprovar) conexão S-TAP com o Guardium (certificação S-TAP): Use esta função para controlar os hosts específicos S-TAP cujos clientes são permitidos ("aprovados") para acessar o sistema Guardium .
+</br></br>>
+    IP para Hostname Aliasing: A função IP-to-Hostname Aliasing acessa o servidor DNS (Domain Name System) para definir aliases de hostname para endereços IP do cliente e do servidor.
+</br></br>>
+    Configure Permission to Socket connection: Este tópico se aplica às Classes de Alerta Personalizadas.
+    </p>
+  </div>
+ 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+</body>
+<script src="script.js"></script>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cloud</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../implementacao.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>Oracle Cloud</h1>
+        </b>
+    </header>
+
+    <div class="textos-div">
+        <p>
+            Crie uma rede virtual na nuvem
+1. No Oracle Cloud, acesse o Compute Service Console. Vá para Rede >
+Redes virtuais em nuvem.
+<a><img class="img_ibm_valor" src="../../img/o1.PNG"/></a>
+
+2. Clique em Criar rede virtual na nuvem.
+<a><img class="img_ibm_valor" src="../../img/o2.PNG"/></a>
+
+3. Insira o nome da VCN, o nome do compartimento no qual a VCN será
+criado e o bloco CIDR (ex: 10.0.0.0/16). Selecione Usar nome do host neste
+VCN e, em seguida, clique no botão Create Virtual Cloud Network.
+<a><img class="img_ibm_valor" src="../../img/o3.PNG"/></a>
+
+
+4. Clique em Criar sub-rede.
+<a><img class="img_ibm_valor" src="../../img/o4.PNG"/></a>
+
+5. Digite o nome da sub-rede e o bloco CIDR. Selecione Tabela de rota padrão e
+Lista de segurança padrão. Clique em Criar sub-rede.
+<a><img class="img_ibm_valor" src="../../img/o5.PNG"/></a>
+
+6. Modifique as regras de segurança padrão e abra as portas necessárias para o Guardium.
+a. Clique no link Lista de segurança e, em seguida, clique em Lista de segurança padrão.
+<a><img class="img_ibm_valor" src="../../img/o6.PNG"/></a>
+
+
+b. Clique em Incluir Regras de Entrada.
+<a><img class="img_ibm_valor" src="../../img/o7.PNG"/></a>
+
+
+c. Adicione regras de entrada para as portas 22,3306,8081, 8443-8445,8447 e 16016-
+16021.
+<a><img class="img_ibm_valor" src="../../img/o8.PNG"/></a>
+
+
+
+d. Adicionar regra de saída Permitir todo o tráfego.
+<a><img class="img_ibm_valor" src="../../img/o9.PNG"/></a>
+
+
+- Iniciar Instância
+Navegue até o Oracle OCI Marketplace e procure por Guardium. Selecione os
+Versão do Guardium (ex: 10.6), digite Collector ou Aggregator. Selecione o OCI
+Compartimento no qual a instância será criada e, em seguida, clique em Iniciar instância.
+1. Digite o nome da instância e selecione a forma da instância. guardium
+recomenda Compute Shapes com pelo menos 8 vCPUs e 32 GB de RAM.
+Formas de computação: VM.Standard2.4, VM.Standard2.8, VM.Standard2.16,
+VM.Standard2.24, VM.Standard.E2.4, VM.Standard.E2.8, VM.DenseIO2.8,
+VM.DenseIO2.16, VM.DenseIO2.24
+2. Escolha a chave pública SSH usada para conectar-se à instância.
+<a><img class="img_ibm_valor" src="../../img/o10.PNG"/></a>
+
+
+3. Configure a rede. Selecione a VCN e a sub-rede criadas na etapa anterior.
+Em seguida, clique em Criar.
+<a><img class="img_ibm_valor" src="../../img/o11.PNG"/></a>
+
+4. Assim que a implantação estiver pronta, o status deve ser atualizado para “Executando”.
+</br></br>
+- Conexão com a instância
+</br></br>
+1. Conecte-se à GUI do Guardium: Em um navegador, acesse a URL: https://<ip-ofgmachine>:8443.
+Observação: a senha padrão para usuários admin, accessmgr e Guardium UI é a
+últimos 20 caracteres do ID OCI da instância. Depois de fazer o login pela primeira vez, você está
+solicitado a alterar a senha.
+</br></br>
+2. Conecte-se à CLI. De um terminal, conecte via ssh ao cli usando a chave privada
+correspondente à chave pública selecionada ao iniciar a instância:
+</br></br>
+
+Configuração de Rede do Guardium
+</br></br>
+1. Na página Compute Service Console, encontre os valores para o IP privado, sub-rede
+máscara, IP do gateway interno e FQDN interno da instância. Em seguida, execute o
+seguintes comandos de rede CLI para configurar o dispositivo.
+</br></br>
+Responda sim à pergunta “É um dispositivo recém-clonado?”
+</br></br>
+2. Por fim, execute o comando restart network da CLI para que as alterações entrem em vigor.
+</br></br>
+
+3. Agregação/CM fora da rede interna. Para se conectar a um
+Agregador ou gerenciador central fora da rede interna, é necessário habilitar
+PasswordAuthentication para esse IP/rede específico. Execute a seguinte CLI
+comando para habilitar PasswordAuthentication:
+        </p>
+    </div>
+
+</body>
+<script src="script.js"></script>

@@ -1,0 +1,187 @@
+body{
+    background: #4455e7;
+}
+.menus {
+    border: 1px solid #000;
+    width:400px;
+    height: 52px;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 1s all;
+    border-radius:10px;
+    
+}
+.menus:hover {
+   background: #d4d3d3;
+   transition: color .1s;
+}
+/* todos os textos */
+.textos-div {
+    border: 0px solid #000;
+    width:700px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 23px;
+    border-radius:10px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.list-group{
+    width: 400px;
+    text-align: left;
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
+   
+}
+
+.list-group-item {
+    height: 90px;
+    cursor: pointer;
+}
+
+.contato-link {
+    border: 0px solid #000;
+    width:300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius:10px;
+}
+
+/* index.html */
+.i{
+    margin: auto;
+    border: 0px solid #000;
+    width: 20%;
+    height: auto;
+    margin-top: 5%; 
+}
+img{
+    width: 100%;
+    height: 200px;
+}
+.pg_inde{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+.b {
+    margin: auto;
+    border: 0px solid #000;
+    width: 20%;
+    height: auto;
+    margin-top: 10px;
+}
+button {
+    height: 100px;
+    text-align: center;
+    margin-top: 150px;
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    background: blue;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s all;
+}
+button:hover {
+    background: rgb(82, 82, 214);
+    transition: color .1s;
+
+}
+/* instalacao.html */
+
+/* implementacao.index.html */
+.imgs-cloud {
+    border: 0px solid #000;
+    width:400px;
+    height: 100%;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    border-radius:10px;
+    
+  
+    
+}
+
+/* aws.html */
+.imge-cloud {
+    width: 150px;
+    cursor: pointer;
+}
+
+.img_aw {
+    width: 100%;
+}
+
+.img_ibm_valor {
+    height: 50%;
+}
+
+/* introducao.html */
+.icons-naveg {
+    width: 50px;
+    height: 50px;
+    
+}
+
+@media only screen and (max-width: 560px) {
+    .i{
+        width: 100%;
+    }
+
+    .pg_inde{
+        width: 100%;
+        font-size: 30px;
+    }
+
+    .b {
+   
+        width: 50%;
+        
+    }
+
+    .textos-div {
+        border: 0px solid #000;
+        width:500px;
+        height: 300px;
+        padding: 30px;
+        margin: auto;
+        margin-top: 10px;
+        text-align: justify;
+        font-size: 23px;
+        border-radius:10px;
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+}
+
+
+
+
+.fundo-menu{
+    background: radial-gradient(#4455e7, #9fa3ec);
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .list-group-item {
+        height: 150px;
+     
+    }
+}

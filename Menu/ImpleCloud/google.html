@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cloud</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../implementacao.html">Voltar</a>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+              <ul class="navbar-nav mr-auto">
+              
+              </ul>
+            </div>
+          </nav>
+        <b>
+            <h1 align='center'>Google Cloud</h1>
+        </b>
+    </header>
+  
+    <div class="textos-div">
+        <p> 
+            - Procedimento de Implantação:
+        </br></br>
+            1. Navegue até https://console.cloud.google.com
+        </br></br>
+            2. Selecione seu projeto do Google para implementar o(s) dispositivo(s) Guardium.
+        </br></br>
+            3. No painel do menu, navegue até Compute Engine
+        </br></br>
+            4. Clique em instâncias de VM
+        </br></br>
+            5. Clique em Criar Instância
+        </br></br>
+            a. Forneça um nome para a instância
+        </br></br>
+            b. Selecione uma zona
+        </br></br>
+            c. Selecione um tipo de máquina
+        </br></br>
+            Observação: o IBM Security Guardium requer no mínimo 4 vCPUs e 24 GB de RAM.
+            <a><img class="img_ibm_valor" src="../../img/g1.PNG"/></a>
+        </br></br>
+            d. Na seção Disco de inicialização, clique em Alterar
+            <a><img class="img_ibm_valor" src="../../img/g2.PNG"/></a>
+        </br></br>
+            i. Clique na guia Imagens personalizadas
+        </br></br>
+            ii. Em Mostrar imagens de, selecione o projeto Guardium Images
+        </br></br>
+            iii. Na lista de imagens, selecione a imagem do IBM Security Guardium por
+            seus requerimentos
+            <a><img class="img_ibm_valor" src="../../img/g3.PNG"/></a>
+        </br></br>
+            iv. Clique em Selecionar
+        </br></br>
+            e. Clique em Criar para implantar a VM
+            - Configurando a Rede
+            Depois que a instância é criada, ela aparece na página Instâncias de VM. Por padrão, a maioria das portas são
+            bloqueado pelo firewall. Para configurar as regras de firewall e abrir portas específicas, siga os passos
+            abaixo.
+        </br></br>
+            1. Clique no nome da instância
+            Role para baixo até Interfaces de rede e clique no nome da rede
+            <a><img class="img_ibm_valor" src="../../img/g4.PNG"/></a>
+        </br></br>
+            Role para baixo até Regras de firewall e clique em Adicionar regra de firewall
+            Digite um nome para a regra de firewall
+            Insira uma descrição
+            Em Filtro de origem, selecione Sub-redes
+            No menu suspenso Sub-redes, selecione as sub-redes que se aplicam
+            ao seu ambiente
+            Em Protocolos e portas, adicione as seguintes portas: “tcp:8443;udp:8443” para
+            ser capaz de se conectar à GUI
+            <a><img class="img_ibm_valor" src="../../img/g5.PNG"/></a>
+        </br></br>
+            Clique em Criar
+            Repita a etapa 8 para as seguintes portas:
+        </br></br>
+            • Para GIM: “tcp:8444-8446; tcp:8081”
+        </br></br>
+            • Para FAM: “tcp:16022-16023”
+        </br></br>
+            • Para Unix STAP: “tcp:16016-16018”
+        </br></br>
+            • Para Windows STAP: “tcp:9500-9501”
+        </br></br>
+            • Para Pesquisa Rápida: “tcp:8983; tcp:9983
+        </br></br>
+            • Para MySQL: “tcp:3306”
+        </br></br>
+            -Conectando-se ao Guardium Appliance na nuvem
+            Para se conectar ao dispositivo Guardium configurado com as regras de firewall acima, você
+            precisa estabelecer uma conexão VPN e conectar sua rede existente ao Google
+            Rede da plataforma de nuvem. Aqui estão as etapas que descrevem como criar um configure um
+            Conexão VPN no Google Cloud.
+        </br></br>
+            - Conecte-se à GUI
+            Depois de estabelecer uma conexão VPN, abra um navegador da Web neste endereço:
+            https://<guardium-ip>:8443. Faça login com as credenciais fornecidas pelo Guardium, o
+            sistema solicitará que você altere a senha no primeiro login.
+            <a><img class="img_ibm_valor" src="../../img/g6.PNG"/></a>
+        </br></br>    
+            - Conecte-se à CLI
+            Para se conectar ao Guardium CLI, ssh (ou use Putty) para o Guardium IP e faça login como usuário cli. Se
+            este é o primeiro login no sistema, você será solicitado a alterar a senha.
+            Por favor, salve esta senha em um local seguro.
+            Configurando a rede do dispositivo:
+        </br></br>
+            1. Selecione a VM na página de instâncias de VM no Google Cloud Platform
+        </br></br>
+            2. Role para baixo até a seção Interfaces de rede
+        </br></br>
+            3. Anote o IP privado associado à VM
+        </br></br>
+            4. Defina as configurações de rede
+        </br></br>
+            a. SSH no dispositivo usando o IP privado como usuário CLI
+        </br></br>
+            b. Altere sua senha no primeiro login
+            ssh cli@10.142.0.2
+            IBM Guardium, interface de linha de comando (CLI):
+            <a><img class="img_ibm_valor" src="../../img/g7.PNG"/></a>
+        </br></br>
+            c. Configure o IP do sistema (use o IP privado ou interno)
+            <a><img class="img_ibm_valor" src="../../img/g8.PNG"/></a>
+        </br></br>
+            
+            d. Configurar a máscara de rede
+            <a><img class="img_ibm_valor" src="../../img/g9.PNG"/></a>
+        </br></br>
+            e. Configurar a rota interna
+            <a><img class="img_ibm_valor" src="../../img/g10.PNG"/></a>
+        </br></br>
+            
+            f. Configurar o resolvedor de rede
+            <a><img class="img_ibm_valor" src="../../img/g11.PNG"/></a>
+        </br></br>
+            g. Configurar o nome do host
+            <a><img class="img_ibm_valor" src="../../img/g12.PNG"/></a> 
+            
+        </br></br>
+            h. Configurar o domínio
+            <a><img class="img_ibm_valor" src="../../img/g13.PNG"/></a>
+        </br></br>
+            
+            
+            i. Reinicie a rede para aplicar as alterações
+            <a><img class="img_ibm_valor" src="../../img/g14.PNG"/></a>
+            
+            
+            
+        </p>
+        
+    </div>
+
+
+</body>
+<script src="script.js"></script>
